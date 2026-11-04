@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diva Ridho Wira Hapsari, S.IKom. — Personal Portfolio</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rosebrand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#d946ef',
+                            700: '#be185d',
+                            800: '#9f1239'
+                        },
+                        sage: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857'
+                        },
+                        warmbg: '#faf7f8'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Scrollbar Removal */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Glassmorphism & Soft Shadow Styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 114, 182, 0.2);
+            box-shadow: 0 10px 25px -5px rgba(244, 114, 182, 0.05), 0 8px 10px -6px rgba(16, 185, 129, 0.04);
+        }
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 16px 32px -8px rgba(244, 114, 182, 0.12), 0 8px 16px -4px rgba(16, 185, 129, 0.08);
+        }
+
+        /* Ambient Radial Gradient Background */
+        .glow-bg {
+            background: 
+                radial-gradient(circle at 12% 18%, rgba(244, 114, 182, 0.16) 0%, transparent 45%),
+                radial-gradient(circle at 88% 82%, rgba(16, 185, 129, 0.14) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(254, 205, 211, 0.1) 0%, transparent 60%);
+        }
+
+        /* Dual Gradient Text Accent */
+        .text-gradient {
+            background: linear-gradient(135deg, #be185d 0%, #ec4899 50%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-warmbg text-slate-700 font-sans overflow-hidden select-none antialiased">
+
+    <!-- Ambient Glowing Background Effect -->
+    <div class="fixed inset-0 glow-bg pointer-events-none z-0"></div>
+
+    <!-- Top Navigation Header (9 Responsive Menu Items) -->
+    <header class="fixed top-0 left-0 w-full z-50 px-3 sm:px-6 py-2.5 flex items-center justify-between border-b border-rose-100/80 bg-white/85 backdrop-blur-md shadow-xs gap-2 sm:gap-4">
+        
+        <!-- Logo Brand / Name -->
+        <div class="flex items-center space-x-2.5 cursor-pointer flex-shrink-0" onclick="scrollToSection('profil')">
+            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-gradient-to-tr from-rosebrand-400 via-rosebrand-500 to-sage-500 flex items-center justify-center text-white font-extrabold text-xs sm:text-sm shadow-md shadow-rosebrand-500/20">
+                DR
+            </div>
+            <div class="hidden sm:block">
+                <span class="font-extrabold text-xs sm:text-sm tracking-tight text-slate-800 block leading-none">Diva Ridho W. H.</span>
+                <span class="text-[10px] text-rosebrand-700 font-semibold">Public Relations & Communication</span>
+            </div>
+        </div>
+
+        <!-- 9 Responsive Horizontal Scrollable Menu Bar -->
+        <nav class="flex items-center space-x-1 bg-slate-100/80 p-1 rounded-full border border-rose-100/80 overflow-x-auto hide-scrollbar whitespace-nowrap max-w-[62vw] sm:max-w-[70vw] lg:max-w-none">
+            <button onclick="scrollToSection('profil')" id="nav-profil" class="nav-btn px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 text-slate-600 hover:text-rosebrand-700 flex-shrink-0">
+                Profil
+            </button>
+            <button onclick="scrollToSection('pendidikan')" id="nav-pendidikan" class="nav-btn px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 text-slate-600 hover:text-rosebrand-700 flex-shrink-0">
+                Pendidikan
+            </button>
+            <button onclick="scrollToSection('soft-skill')" id="nav-soft-skill" class="nav-btn px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 text-slate-600 hover:text-rosebrand-700 flex-shrink-0">
+                Soft Skill
+            </button>
+            <button onclick="scrollToSection('hard-skill')" id="nav-hard-skill" class="nav-btn px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 text-slate-600 hover:text-rosebrand-700 flex-shrink-0">
+                Hard Skill
+            </button>
+            <button onclick="scrollToSection('internship')" id="nav-internship" class="nav-btn px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 text-slate-600 hover:text-rosebrand-700 flex-shrink-0">
+                Internship
+            </button>
+            <button onclick="scrollToSection('organisasi')" id="nav-organisasi" class="nav-btn px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 text-slate-600 hover:text-rosebrand-700 flex-shrink-0">
+                Organisasi
+            </button>
+            <button onclick="scrollToSection('kepanitiaan')" id="nav-kepanitiaan" class="nav-btn px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 text-slate-600 hover:text-rosebrand-700 flex-shrink-0">
+                Kepanitiaan
+            </button>
+            <button onclick="scrollToSection('sertifikat')" id="nav-sertifikat" class="nav-btn px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 text-slate-600 hover:text-rosebrand-700 flex-shrink-0">
+                Sertifikat
+            </button>
+            <button onclick="scrollToSection('kontak')" id="nav-kontak" class="nav-btn px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-200 text-slate-600 hover:text-rosebrand-700 flex-shrink-0">
+                Kontak
+            </button>
+        </nav>
+
+        <!-- Right Arrow Navigation Controls -->
+        <div class="flex items-center space-x-1.5 flex-shrink-0">
+            <button onclick="navigateSlide(-1)" title="Geser Kiri" class="w-8 h-8 rounded-full border border-rose-100 bg-white/90 flex items-center justify-center text-slate-600 hover:text-rosebrand-700 hover:bg-rosebrand-50 hover:border-rosebrand-200 transition shadow-xs active:scale-95">
+                <i class="fa-solid fa-chevron-left text-xs"></i>
+            </button>
+            <button onclick="navigateSlide(1)" title="Geser Kanan" class="w-8 h-8 rounded-full border border-rose-100 bg-white/90 flex items-center justify-center text-slate-600 hover:text-rosebrand-700 hover:bg-rosebrand-50 hover:border-rosebrand-200 transition shadow-xs active:scale-95">
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Horizontal Scroll Track Container (9 Standalone Sections) -->
+    <main id="horizontal-track" class="flex flex-row overflow-x-auto snap-x snap-mandatory h-screen w-screen hide-scrollbar scroll-smooth relative z-10 pt-14">
+
+        <!-- ================= SECTION 1: PROFIL ================= -->
+        <section id="profil" class="w-screen h-[calc(100vh-3.5rem)] flex-shrink-0 snap-center p-6 md:p-12 lg:p-16 flex items-center justify-center overflow-y-auto">
+            <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Bio Text -->
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full border border-sage-200 bg-sage-50 text-sage-700 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span>
+                        <span>Open for New Opportunities & Collaboration</span>
+                    </div>
+
+                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-800 leading-tight">
+                        Halo, Saya <span class="text-gradient">Diva Ridho Wira Hapsari, S.IKom.</span>
+                    </h1>
+
+                    <p class="text-slate-600 text-xs sm:text-sm lg:text-base max-w-2xl leading-relaxed">
+                        Lulusan S1 Ilmu Komunikasi peminatan Public Relations Universitas Ahmad Dahlan. Memiliki <strong class="text-rosebrand-700">pengalaman aktif dalam organisasi, kepanitiaan, dan berbagai project mata kuliah</strong>. Memiliki kemampuan komunikasi interpersonal yang baik, teliti dalam pengelolaan administrasi dan dokumentasi, serta terbiasa bekerja dalam tim dan mengelola jadwal kegiatan.  <strong class="text-sage-700">Bertanggung jawab dalam mengelola konten media sosial mulai dari perencanaan hingga publikasi</strong>, untuk mendukung efektivitas kerja, menguasai Microsoft Office, Microsoft Excel, Canva, Serta Caput.
+                    </p>
+
+                    <!-- Key Attribute Badges -->
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="px-3 py-1 rounded-full bg-rosebrand-50 border border-rosebrand-100 text-rosebrand-700 text-xs font-semibold">
+                            ✨ Fast Learner
+                        </span>
+                        <span class="px-3 py-1 rounded-full bg-sage-50 border border-sage-200 text-sage-700 text-xs font-semibold">
+                            🌿 Creative Problem Solver
+                        </span>
+                        <span class="px-3 py-1 rounded-full bg-rosebrand-50 border border-rosebrand-100 text-rosebrand-700 text-xs font-semibold">
+                            💡 Detail Oriented
+                        </span>
+                        <span class="px-3 py-1 rounded-full bg-sage-50 border border-sage-200 text-sage-700 text-xs font-semibold">
+                            📢 Media Relations
+                        </span>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="scrollToSection('internship')" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-rosebrand-500 to-rosebrand-600 text-white font-semibold text-xs shadow-md shadow-rosebrand-500/25 hover:shadow-lg hover:scale-[1.02] transition">
+                            Lihat Pengalaman Magang <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                        <button onclick="scrollToSection('kontak')" class="px-6 py-3 rounded-2xl glass-card text-slate-700 font-semibold text-xs border border-rose-100 hover:bg-rose-50/50 transition">
+                            Hubungi Saya
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Photo Avatar Frame -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 sm:w-80 rounded-3xl glass-card p-5 border border-rose-100 flex flex-col justify-between group">
+                        <!-- Decorative Pastel Glows -->
+                        <div class="absolute -top-10 -right-10 w-36 h-36 bg-rosebrand-200/40 rounded-full blur-2xl"></div>
+                        <div class="absolute -bottom-10 -left-10 w-36 h-36 bg-sage-200/40 rounded-full blur-2xl"></div>
+
+                        <div class="relative z-10 text-center space-y-4">
+                           <!-- Frame Avatar Foto (Diperbesar) -->
+                            <div class="w-40 h-40 sm:w-44 sm:h-44 mx-auto rounded-3xl bg-gradient-to-tr from-rosebrand-200 via-rosebrand-100 to-sage-100 border-2 border-white p-1.5 shadow-lg relative overflow-hidden">
+                                <!-- Foto Diva Ridho -->
+                                <img src="profil.jpeg" alt="Foto Diva Ridho" class="w-full h-full object-cover rounded-2xl">
+                                
+                                <!-- Badge Verifikasi Centang -->
+                                <div class="absolute bottom-2.5 right-2.5 bg-sage-500 text-white p-1 rounded-lg text-xs shadow-sm z-10">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-base font-bold text-slate-800">Diva Ridho</h3>
+                                <p class="text-xs text-rosebrand-700 font-medium">Balikpapan / Nunukan, Indonesia</p>
+                            </div>
+
+                            <p class="text-xs text-sage-500 leading-relaxed italic border-t border-rose-100 pt-3">
+                                <a href ="https://drive.google.com/file/d/170I_YEkRk9oR-FU6kNyOIqR6jwZLTCpP/view?usp=sharing">
+                                    Klik untuk melihat CV
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 2: PENDIDIKAN (EDUCATION) ================= -->
+        <section id="pendidikan" class="w-screen h-[calc(100vh-3.5rem)] flex-shrink-0 snap-center p-6 md:p-12 lg:p-16 flex items-center justify-center overflow-y-auto">
+            <div class="max-w-7xl w-full space-y-6">
+                
+                <!-- Section Header -->
+                <div class="text-center border-b border-rose-100 pb-3">
+                    <span class="text-xs font-semibold tracking-widest text-rosebrand-700 uppercase flex items-center justify-center gap-2">
+                        <span>🎓</span> Riwayat Akademik & Skripsi
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mt-1">Pendidikan / Education</h2>
+                </div>
+
+                <!-- Layout Grid 2 Kolom (Kiri: 5 Kolom Info Studi | Kanan: 7 Kolom Galeri Foto) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center max-w-6xl mx-auto">
+                    
+                    <!-- SISI KIRI: KARTU RIWAYAT STUDI & SKRIPSI (5 Kolom) -->
+                    <div class="lg:col-span-5 glass-card p-6 sm:p-7 rounded-3xl border border-rose-100 shadow-sm space-y-5 relative overflow-hidden">
+                        
+                        <!-- Badge Kampus, Program Studi, Tahun & IPK -->
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-rose-100 pb-4">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-14 h-14 rounded-2xl border border-amber-200 p-2 flex items-center justify-center shadow-xs flex-shrink-0 bg-white/50">
+                                    <img src="https://uad.ac.id/wp-content/uploads/logo-warna.png" alt="Logo UAD" class="w-full h-full object-contain">
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 text-base sm:text-lg leading-snug">
+                                        S1 Ilmu Komunikasi (Public Relations)
+                                    </h3>
+                                    <p class="text-xs font-semibold text-rosebrand-700">
+                                        Universitas Ahmad Dahlan (UAD)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col sm:items-end">
+                                <span class="px-3 py-1 rounded-full bg-slate-900 text-white text-xs font-bold shadow-xs">
+                                    2022 – 2026
+                                </span>
+                                <span class="text-xs font-extrabold text-emerald-600 mt-1">
+                                    IPK: 3.68 / 4.00 (Cumlaude)
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Separator Line with Nodes -->
+                        <div class="relative py-1">
+                            <div class="w-full h-1 bg-gradient-to-r from-rosebrand-400 via-rosebrand-200 to-sage-400 rounded-full"></div>
+                            <div class="absolute top-1/2 left-0 -translate-y-1/2 w-3.5 h-3.5 bg-rosebrand-500 border-2 border-white rounded-full shadow-xs"></div>
+                            <div class="absolute top-1/2 right-0 -translate-y-1/2 w-3.5 h-3.5 bg-sage-500 border-2 border-white rounded-full shadow-xs"></div>
+                        </div>
+
+                        <!-- Thesis Project Info -->
+                        <div class="space-y-2">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-rosebrand-600 block">
+                                Undergraduate Thesis Project / Skripsi:
+                            </span>
+                            <h4 class="text-xs sm:text-sm font-bold text-slate-800 leading-snug italic">
+                                "STRATEGI KOMUNIKASI BALAI LAYANAN PERPUSTAKAAN DINAS PERPUSTAKAAN DAN ARSIP DAERAH DIY DALAM MEMPERKENALKAN UNIT LAYANAN PERPUSTAKAAN MELALUI INSTAGRAM"
+                            </h4>
+                            <p class="text-[11px] text-slate-500 leading-relaxed">
+                                Fokus penelitian pada strategi komunikasi pemasaran, jenis konten (gambar, video/Reels), serta edukasi layanan digital/e-library disampaikan kepada masyarakat luas untuk meningkatkan literasi dan kunjungan.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- SISI KANAN: FOTO WISUDA (7 Kolom) -->
+                    <div class="lg:col-span-7 flex items-center justify-center">
+                        
+                        <!-- Standing Portrait / Graduation Frame -->
+                        <div class="w-64 sm:w-72 lg:w-80 flex-shrink-0 aspect-[3/4] rounded-3xl glass-card p-2.5 border border-rose-100 overflow-hidden shadow-xl group relative">
+                            <div class="w-full h-full rounded-2xl bg-gradient-to-tr from-rosebrand-100 via-white to-sage-100 overflow-hidden relative">
+                                <img src="pend skripsi.jpeg" alt="Foto Wisuda Diva Ridho, S.IKom." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute bottom-3 left-3 right-3 px-3 py-2 rounded-2xl bg-white/95 backdrop-blur-md text-center border border-rose-100 shadow-md">                                    
+                                    <span class="text-[10px] sm:text-xs text-rosebrand-700 font-bold block mt-0.5">
+                                        <a href="https://opac.uad.ac.id/index.php/koleksi/Penelitian/detail/3d0738a40408746b35c00c356c2dd0cedb74da3478b1b95fb861f449bb7303713e9a44b7640a20f8ba846075bef4dd5bce6c83380775ee833d2e60f7e4b4ab07yhwQtprQAAYx-SD65JT47A">
+                                            Klik untuk melihat Skripsi
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= SECTION 3: SOFT SKILL (DESAIN ZIGZAG 3 KIRI - 2 KANAN) ================= -->
+        <section id="soft-skill" class="w-screen h-[calc(100vh-3.5rem)] flex-shrink-0 snap-center p-6 md:p-12 lg:p-16 flex items-center justify-center overflow-y-auto">
+            <div class="max-w-5xl w-full space-y-8">
+                
+                <!-- Section Header (Rata Tengah) -->
+                <div class="text-center border-b border-rose-100 pb-4">
+                    <span class="text-xs font-semibold tracking-widest text-rosebrand-700 uppercase">Karakter & Interpersonal</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mt-1">Soft Skill</h2>
+                </div>
+
+                <!-- Grid 2 Kolom Zigzag (3 Kiri, 2 Kanan dengan Offset Vertikal) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start max-w-4xl mx-auto">
+                    
+                    <!-- ================= KOLOM KIRI (3 ITEM VERTIKAL) ================= -->
+                    <div class="flex flex-col gap-5">
+                        
+                        <!-- Item 1 -->
+                        <div class="glass-card p-4 rounded-3xl border border-rose-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-all">
+                            <div class="w-20 h-20 flex-shrink-0 aspect-square rounded-2xl bg-rosebrand-50 border border-rose-100 flex items-center justify-center overflow-hidden relative group">
+                                <img src="komunikasi.jpeg" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80'" alt="Komunikasi Interpersonal" class="w-full h-full object-cover">
+                                <span class="absolute bottom-1 right-1 bg-white/90 text-xs px-1.5 py-0.5 rounded-md shadow-xs">🤝</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm sm:text-base mt-0.5">Komunikasi Interpersonal</h3>
+                                <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">Mampu berinteraksi & menyampaikan pesan secara efektif.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="glass-card p-4 rounded-3xl border border-rose-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-all">
+                            <div class="w-20 h-20 flex-shrink-0 aspect-square rounded-2xl bg-rosebrand-50 border border-rose-100 flex items-center justify-center overflow-hidden relative group">
+                                <img src="waktyu.jpeg" onerror="this.src='https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=200&auto=format&fit=crop&q=80'" alt="Manajemen Waktu" class="w-full h-full object-cover">
+                                <span class="absolute bottom-1 right-1 bg-white/90 text-xs px-1.5 py-0.5 rounded-md shadow-xs">⏰</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm sm:text-base mt-0.5">Manajemen Waktu</h3>
+                                <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">Disiplin mengelola skala prioritas & tenggat waktu.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="glass-card p-4 rounded-3xl border border-rose-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-all">
+                            <div class="w-20 h-20 flex-shrink-0 aspect-square rounded-2xl bg-rosebrand-50 border border-rose-100 flex items-center justify-center overflow-hidden relative group">
+                                <img src="Kolaborasi.jpeg" onerror="this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&auto=format&fit=crop&q=80'" alt="Kepemimpinan & Kolaborasi" class="w-full h-full object-cover">
+                                <span class="absolute bottom-1 right-1 bg-white/90 text-xs px-1.5 py-0.5 rounded-md shadow-xs">👑</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm sm:text-base mt-0.5">Kepemimpinan & Kolaborasi</h3>
+                                <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">Mendorong sinergi positif dalam mengarahkan tim.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= KOLOM KANAN (2 ITEM VERTIKAL - ZIGZAG OFFSET) ================= -->
+                    <div class="flex flex-col gap-5 md:pt-14">
+                        
+                        <!-- Item 4 -->
+                        <div class="glass-card p-4 rounded-3xl border border-rose-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-all">
+                            <div class="w-20 h-20 flex-shrink-0 aspect-square rounded-2xl bg-rosebrand-50 border border-rose-100 flex items-center justify-center overflow-hidden relative group">
+                                <img src="kerja kelompok.jpeg" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&auto=format&fit=crop&q=80'" alt="Kerjasama Tim" class="w-full h-full object-cover">
+                                <span class="absolute bottom-1 right-1 bg-white/90 text-xs px-1.5 py-0.5 rounded-md shadow-xs">👥</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm sm:text-base mt-0.5">Kerjasama Tim (Teamwork)</h3>
+                                <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">Adaptif dan suportif dalam kelompok kerja.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="glass-card p-4 rounded-3xl border border-rose-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-all">
+                            <div class="w-20 h-20 flex-shrink-0 aspect-square rounded-2xl bg-rosebrand-50 border border-rose-100 flex items-center justify-center overflow-hidden relative group">
+                                <img src="prosol.jpeg" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&auto=format&fit=crop&q=80'" alt="Problem Solving & Adaptasi" class="w-full h-full object-cover">
+                                <span class="absolute bottom-1 right-1 bg-white/90 text-xs px-1.5 py-0.5 rounded-md shadow-xs">💡</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm sm:text-base mt-0.5">Problem Solving & Adaptasi</h3>
+                                <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">Cepat tanggap menghadapi tantangan baru.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 4: HARD SKILL (STANDALONE SECTION) ================= -->
+        <section id="hard-skill" class="w-screen h-[calc(100vh-3.5rem)] flex-shrink-0 snap-center p-6 md:p-12 lg:p-16 flex items-center justify-center overflow-y-auto">
+            <div class="max-w-6xl w-full space-y-6">
+                
+                <!-- Section Header (Rata Tengah) -->
+                <div class="text-center border-b border-rose-100 pb-4">
+                    <span class="text-xs font-semibold tracking-widest text-rosebrand-700 uppercase">Software & Technical Ability</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mt-1">Hard Skill</h2>
+                </div>
+
+                <!-- Grid Layout (Left: Description Cards | Right: Visual Icons Mockup) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left: Bulleted List of Tools (6 Columns) -->
+                    <div class="lg:col-span-6 glass-card p-6 sm:p-8 rounded-3xl border border-rose-100 shadow-sm space-y-3.5">
+                        <ul class="space-y-3 text-xs md:text-sm text-slate-600 leading-relaxed">
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-rosebrand-500 font-bold text-base mt-0.5">•</span>
+                                <span><strong class="text-slate-800 font-bold">Microsoft Word</strong> — pengolahan dan penyusunan dokumen.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-sage-500 font-bold text-base mt-0.5">•</span>
+                                <span><strong class="text-slate-800 font-bold">Microsoft Excel</strong> — pengolahan dan pengelolaan data.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-rosebrand-500 font-bold text-base mt-0.5">•</span>
+                                <span><strong class="text-slate-800 font-bold">Microsoft PowerPoint</strong> — pembuatan materi presentasi.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-sage-500 font-bold text-base mt-0.5">•</span>
+                                <span><strong class="text-slate-800 font-bold">Canva</strong> — desain grafis dan pembuatan konten digital.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-rosebrand-500 font-bold text-base mt-0.5">•</span>
+                                <span><strong class="text-slate-800 font-bold">Google Workspace</strong> — mendukung pengelolaan dokumen dan pekerjaan kolaboratif.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <span class="text-sage-500 font-bold text-base mt-0.5">•</span>
+                                <span><strong class="text-slate-800 font-bold">CapCut</strong> — editing video untuk kebutuhan publikasi dan media sosial.</span>
+                            </li>
+                        </ul>
+
+                        <!-- Language Skill Additional Badge Bar -->
+                        <div class="pt-4 border-t border-rose-100 flex items-center justify-between text-xs">
+                            <span class="font-semibold text-slate-700">Penguasaan Bahasa:</span>
+                            <div class="flex gap-2">
+                                <span class="px-2.5 py-1 bg-rosebrand-50 text-rosebrand-700 font-semibold rounded-lg text-[11px] border border-rosebrand-100">ID Indonesia (Aktif)</span>
+                                <span class="px-2.5 py-1 bg-sage-50 text-sage-700 font-semibold rounded-lg text-[11px] border border-sage-200">EN Inggris (Pasif)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Visual Icon Presentation (6 Columns) -->
+                    <div class="lg:col-span-6 flex flex-col items-center justify-center space-y-6">
+                        
+                        <!-- Main Software Icon Badges Row (Logo Asli) -->
+                        <div class="flex flex-wrap items-center justify-center gap-3">
+                            
+                            <!-- Word Icon -->
+                            <div class="w-14 h-14 bg-white/95 rounded-2xl border border-slate-100 flex flex-col items-center justify-center p-2 shadow-sm hover:scale-105 transition-transform" title="Microsoft Word">
+                                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Microsoft_Office_Word_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_Word_%282025%E2%80%93present%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Word" class="w-7 h-7 object-contain">
+                                <span class="text-[9px] font-bold text-slate-600 mt-1">Word</span>
+                            </div>
+
+                            <!-- Excel Icon -->
+                            <div class="w-14 h-14 bg-white/95 rounded-2xl border border-slate-100 flex flex-col items-center justify-center p-2 shadow-sm hover:scale-105 transition-transform" title="Microsoft Excel">
+                                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Microsoft_Office_Excel_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_Excel_%282025%E2%80%93present%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Excel" class="w-7 h-7 object-contain">
+                                <span class="text-[9px] font-bold text-slate-600 mt-1">Excel</span>
+                            </div>
+
+                            <!-- PPT Icon -->
+                            <div class="w-14 h-14 bg-white/95 rounded-2xl border border-slate-100 flex flex-col items-center justify-center p-2 shadow-sm hover:scale-105 transition-transform" title="Microsoft PowerPoint">
+                                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Microsoft_PowerPoint_Logo.png/960px-Microsoft_PowerPoint_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="PPT" class="w-7 h-7 object-contain">
+                                <span class="text-[9px] font-bold text-slate-600 mt-1">PPT</span>
+                            </div>
+
+                            <!-- Canva Icon -->
+                            <div class="w-14 h-14 bg-white/95 rounded-2xl border border-slate-100 flex flex-col items-center justify-center p-2 shadow-sm hover:scale-105 transition-transform" title="Canva">
+                                <img src="https://static.vecteezy.com/system/resources/thumbnails/032/329/171/small_2x/canva-icon-logo-symbol-free-png.png">
+                                <span class="text-[9px] font-bold text-slate-600 mt-1">Canva</span>
+                            </div>
+
+                            <!-- CapCut Icon -->
+                            <div class="w-14 h-14 bg-white/95 rounded-2xl border border-slate-100 flex flex-col items-center justify-center p-2 shadow-sm hover:scale-105 transition-transform" title="CapCut">
+                                <img src="https://images.seeklogo.com/logo-png/43/1/capcut-logo-png_seeklogo-437025.png" alt="CapCut" class="w-7 h-7 object-contain">
+                                <span class="text-[9px] font-bold text-slate-600 mt-1">CapCut</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Google Workspace Integrated Box (Logo Asli) -->
+                        <div class="w-full max-w-sm glass-card p-4 rounded-2xl border border-pink-100 shadow-sm flex flex-col items-center space-y-3">
+                            <div class="flex items-center gap-2">
+                                <span class="text-base font-extrabold tracking-tight">
+                                    <span class="text-blue-500">G</span><span class="text-red-500">o</span><span class="text-yellow-500">o</span><span class="text-blue-500">g</span><span class="text-green-500">l</span><span class="text-red-500">e</span>
+                                </span>
+                                <span class="text-xs font-bold text-slate-700">Workspace</span>
+                            </div>
+
+                            <div class="flex items-center gap-2.5">
+                                <!-- Gmail -->
+                                <div class="w-9 h-9 bg-white rounded-xl border border-slate-100 flex items-center justify-center p-1.5 shadow-xs hover:scale-110 transition-transform" title="Gmail">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" class="w-full h-full object-contain">
+                                </div>
+                                <!-- Google Calendar -->
+                                <div class="w-9 h-9 bg-white rounded-xl border border-slate-100 flex items-center justify-center p-1.5 shadow-xs hover:scale-110 transition-transform" title="Google Calendar">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" alt="Google Calendar" class="w-full h-full object-contain">
+                                </div>
+                                <!-- Google Drive -->
+                                <div class="w-9 h-9 bg-white rounded-xl border border-slate-100 flex items-center justify-center p-1.5 shadow-xs hover:scale-110 transition-transform" title="Google Drive">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" alt="Google Drive" class="w-full h-full object-contain">
+                                </div>
+                                <!-- Google Docs -->
+                                <div class="w-9 h-9 bg-white rounded-xl border border-slate-100 flex items-center justify-center p-1.5 shadow-xs hover:scale-110 transition-transform" title="Google Docs">
+                                    <img src="https://images.icon-icons.com/2631/PNG/512/google_docs_new_logo_icon_159146.png" alt="Google Docs" class="w-full h-full object-contain">
+                                </div>
+                                <!-- Google Sheets -->
+                                <div class="w-9 h-9 bg-white rounded-xl border border-slate-100 flex items-center justify-center p-1.5 shadow-xs hover:scale-110 transition-transform" title="Google Sheets">
+                                    <img src="https://zonalogo.com/assets/google-sheets-logo-png-svg.webp?asset=6155&w=320" alt="Google Sheets" class="w-full h-full object-contain">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 5: INTERNSHIP ================= -->
+        <section id="internship" class="w-screen h-[calc(100vh-3.5rem)] flex-shrink-0 snap-center p-6 md:p-12 lg:p-16 flex items-center justify-center overflow-y-auto">
+            <div class="max-w-6xl w-full space-y-6">
+                
+                <!-- Section Header -->
+                <div class="text-center border-b border-rose-100 pb-4">
+                    <span class="text-xs font-semibold tracking-widest text-rosebrand-700 uppercase">Pengalaman Kerja</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mt-1">Internship</h2>
+                    <p class="text-slate-500 text-xs mt-1">Pengalaman magang profesional dalam pengelolaan komunikasi publik dan media sosial.</p>
+                </div>
+
+                <!-- Grid 2 Kolom (Kiri: Detail Teks & Hasil | Kanan: Galeri Foto Vertikal) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start max-w-5xl mx-auto">
+                    
+                    <!-- SISI KIRI: INFORMASI, TUGAS, DAN HASIL (7 Kolom) -->
+                    <div class="lg:col-span-7 space-y-3.5">
+                        
+                        <div>
+                            <span class="px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-bold shadow-xs inline-block">
+                                Internship
+                            </span>
+                        </div>
+
+                        <!-- Kartu Judul Instansi & Lokasi -->
+                        <div class="glass-card p-4 sm:p-5 rounded-2xl border border-rose-100 shadow-xs">
+                            <h3 class="text-base sm:text-lg lg:text-xl font-extrabold text-slate-800 leading-snug">
+                                BALAI LAYANAN PERPUSTAKAAN DPAD DIY — YOGYAKARTA
+                            </h3>
+                        </div>
+
+                        <!-- Badges Posisi / Role & Periode -->
+                        <div class="flex flex-wrap gap-2.5">
+                            <span class="px-4 py-2 rounded-full bg-white/90 border border-rose-100 text-slate-800 font-bold text-xs sm:text-sm shadow-xs">
+                                Staff Humas
+                            </span>
+                            <span class="px-4 py-2 rounded-full bg-white/90 border border-rose-100 text-rosebrand-700 font-semibold text-xs sm:text-sm shadow-xs">
+                                Sep - Okt 2025
+                            </span>
+                        </div>
+
+                        <!-- Kartu Rincian Tugas (Responsibilities) -->
+                        <div class="glass-card p-5 sm:p-6 rounded-3xl border border-rose-100 shadow-sm space-y-2">
+                            <h4 class="font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider text-rosebrand-600">
+                                Tugas Utama:
+                            </h4>
+                            <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-rosebrand-500 font-bold">•</span>
+                                    <span>Merencanakan dan menyusun kalender konten bulanan media sosial.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-rosebrand-500 font-bold">•</span>
+                                    <span>Membuat desain promosi serta pengeditan video publikasi (Canva & CapCut).</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-rosebrand-500 font-bold">•</span>
+                                    <span>Mengelola jadwal pengunggahan konten hingga tahap publikasi resmi.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-rosebrand-500 font-bold">•</span>
+                                    <span>Mendukung efektivitas kerja administrasi dan pengelolaan dokumen di Divisi Humas.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- SISI KANAN: DUA GALERI FOTO PORTRAT + CAPTION PILL (5 Kolom) -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-4 pt-2 lg:pt-0">
+                        
+                        <!-- Foto 1 + Caption Pill -->
+                        <div class="flex flex-col space-y-3">
+                            <div class="w-full aspect-[3/4] rounded-3xl border border-rose-100 overflow-hidden shadow-md group relative">
+                                <img src="intern 1.png" onerror="this.src='https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&auto=format&fit=crop&q=80'" alt="Dokumentasi Magang 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="glass-card p-3 rounded-2xl border border-rose-100 shadow-xs text-center">                        
+                                <p class="text-[11px] sm:text-xs font-semibold text-rosebrand-700 leading-tight">
+                                    <a href="https://www.instagram.com/reel/DNxS59-ZkLi/?exln=aGJmNHZscDBveGls" target="_blank" rel="noopener noreferrer" class="hover:underline">Open Reel 1</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 2 + Caption Pill -->
+                        <div class="flex flex-col space-y-3">
+                            <div class="w-full aspect-[3/4] rounded-3xl bg-rosebrand-50 border border-rose-100 overflow-hidden shadow-md group relative">
+                                <img src="intern 2.jpeg" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&auto=format&fit=crop&q=80'" alt="Dokumentasi Magang 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="glass-card p-3 rounded-2xl border border-rose-100 shadow-xs text-center">                        
+                                <p class="text-[11px] sm:text-xs font-semibold text-rosebrand-700 leading-tight">
+                                    <a href="https://www.instagram.com/reel/DPBM5q4E09f/?obrf=ZzRxbzQ4MTloYWxw" target="_blank" rel="noopener noreferrer" class="hover:underline">Open Reel 2</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 3 + Caption Pill (Tengah) -->
+                        <div class="col-span-2 justify-self-center w-full max-w-[calc(50%-0.5rem)] flex flex-col space-y-3">
+                            <div class="w-full aspect-[3/4] rounded-3xl bg-rosebrand-50 border border-rose-100 overflow-hidden shadow-md group relative">
+                                <img src="intern 3.jpeg" onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&auto=format&fit=crop&q=80'" alt="Dokumentasi Magang 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="glass-card p-3 rounded-2xl border border-rose-100 shadow-xs text-center"> 
+                                <p class="text-[11px] sm:text-xs font-semibold text-rosebrand-700 leading-tight">
+                                    <a href="https://www.instagram.com/reel/DOuvk0Kk8vg/?mdxt=NjQ2cDFsN2xlMWE=" target="_blank" rel="noopener noreferrer" class="hover:underline">Open Reel 3</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 6: PENGALAMAN ORGANISASI ================= -->
+        <section id="organisasi" class="w-screen h-[calc(100vh-3.5rem)] flex-shrink-0 snap-center p-6 md:p-12 lg:p-16 flex items-center justify-center overflow-y-auto">
+            <div class="max-w-5xl w-full space-y-6">
+                
+                <!-- Section Header (Rata Tengah) -->
+                <div class="text-center border-b border-rose-100 pb-4">
+                    <span class="text-xs font-semibold tracking-widest text-rosebrand-700 uppercase">Aktivitas Mahasiswa</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mt-1">Pengalaman Organisasi</h2>
+                    <p class="text-slate-500 text-xs mt-1">Kontribusi aktif dan peran strategis dalam keorganisasian kampus.</p>
+                </div>
+
+                <!-- Card Kartu Organisasi Utama (Model Layout Acuan Visual) -->
+                <div class="max-w-4xl mx-auto glass-card p-6 sm:p-8 rounded-3xl border border-rose-100 shadow-sm relative overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        
+                        <!-- SISI KIRI: INFO ORGANISASI, JABATAN & PERIODE (5 Kolom) -->
+                        <div class="md:col-span-5 space-y-4 md:border-r md:border-rose-100/80 md:pr-6">
+                            
+                            <!-- Logo BEM & Nama Organisasi -->
+                            <div class="flex items-center gap-3">
+                                <div class="w-14 h-14 rounded-2xl bg-rosebrand-100/80 border border-rosebrand-200 text-rosebrand-600 flex flex-col items-center justify-center shadow-xs flex-shrink-0">
+                                    <span class="text-xs">👑</span>
+                                    <span class="text-[10px] font-black tracking-tighter">BEM</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-emerald-800 text-base sm:text-lg leading-snug">
+                                        Badan Eksekutif Mahasiswa
+                                    </h3>
+                                    <p class="text-xs font-bold text-emerald-700 mt-0.5">
+                                        Fakultas Sastra, Budaya, dan Komunikasi
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Jabatan / Peran -->
+                            <p class="text-xs sm:text-sm font-bold text-rosebrand-600 italic">
+                                Sekretaris departemen Public Relations
+                            </p>
+
+                            <!-- Badges Lokasi & Periode -->
+                            <div class="flex flex-wrap gap-2 text-[11px] text-slate-600 font-medium pt-1">
+                                <span class="px-3 py-1 rounded-full bg-slate-100/80 border border-slate-200 flex items-center gap-1.5">
+                                    📍 FSBK UAD
+                                </span>
+                                <span class="px-3 py-1 rounded-full bg-rosebrand-50 border border-rose-100 text-rosebrand-700 flex items-center gap-1.5 font-semibold">
+                                    🕒 Nov 2023 – Sep 2024
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- SISI KANAN: FOKUS & TANGGUNG JAWAB (Pill Bars Hijau) (7 Kolom) -->
+                        <div class="md:col-span-7 space-y-3">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-rosebrand-600 mb-2">
+                                Fokus & Tanggung Jawab
+                            </h4>
+                            
+                            <div class="space-y-2">
+                                <div class="px-4 py-2.5 rounded-2xl bg-emerald-700/85 backdrop-blur-sm text-white text-xs sm:text-sm font-medium flex items-center gap-3 shadow-xs hover:bg-emerald-800 transition-colors">
+                                    <span class="text-sm">✏️</span>
+                                    <span>Bertanggung jawab sebagai sekretaris departemen.</span>
+                                </div>
+
+                                <div class="px-4 py-2.5 rounded-2xl bg-emerald-700/85 backdrop-blur-sm text-white text-xs sm:text-sm font-medium flex items-center gap-3 shadow-xs hover:bg-emerald-800 transition-colors">
+                                    <span class="text-sm">📅</span>
+                                    <span>Menyusun dan membuat jadwal mengunggah konten ke media.</span>
+                                </div>
+
+                                <div class="px-4 py-2.5 rounded-2xl bg-emerald-700/85 backdrop-blur-sm text-white text-xs sm:text-sm font-medium flex items-center gap-3 shadow-xs hover:bg-emerald-800 transition-colors">
+                                    <span class="text-sm">📷</span>
+                                    <span>Membantu mengedit konten media.</span>
+                                </div>
+
+                                <div class="px-4 py-2.5 rounded-2xl bg-emerald-700/85 backdrop-blur-sm text-white text-xs sm:text-sm font-medium flex items-center gap-3 shadow-xs hover:bg-emerald-800 transition-colors">
+                                    <span class="text-sm">📁</span>
+                                    <span>Menyimpan dan mengatur dokumen kegiatan.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 7: PENGALAMAN KEPANITIAAN ================= -->
+        <section id="kepanitiaan" class="w-screen h-[calc(100vh-3.5rem)] flex-shrink-0 snap-center p-6 md:p-12 lg:p-16 flex items-center justify-center overflow-y-auto">
+            <div class="max-w-6xl w-full space-y-6">
+                
+                <!-- Section Header -->
+                <div class="border-b border-rose-100 pb-4">
+                    <span class="text-xs font-semibold tracking-widest text-sage-600 uppercase">Eksekusi Project & Acara</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mt-1">Pengalaman Kepanitiaan</h2>
+                </div>
+
+                <!-- Committee Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <div class="glass-card glass-card-hover p-6 rounded-3xl space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-rosebrand-50 text-rosebrand-600 flex items-center justify-center text-sm font-bold">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-800">Program Pengenalan Kampus</h3>
+                        <h5 class="text-xs font-bold text-slate-500">(Sep 2024)</h5>
+                        <p class="text-xs font-semibold text-rosebrand-700">Bendahara</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            • Bertanggung jawab dan mengetahui segala pemasukan pengeluaran uang atau biaya yang diperlukan. 
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            • Menyusun laporan keuangan secara berkala untuk transparansi. 
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            • Mengelola kas organisasi dengan cermat dan sesuai kebutuhan. 
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            • Menyimpan dan mengatur dokumen keuangan dengan rapi. 
+                        </p>
+                    </div>
+
+                    <div class="glass-card glass-card-hover p-6 rounded-3xl space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-sage-50 text-sage-600 flex items-center justify-center text-sm font-bold">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-800">Cultural Literation Milad FSBK </h3>
+                        <h5 class="text-xs font-bold text-slate-500">(Des 2023 - Jan 2024)</h5>
+                        <p class="text-xs font-semibold text-sage-700">Bendahara</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            • Bertanggung jawab dan mengetahui segala pemasukan pengeluaran uang atau biaya yang diperlukan. 
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            • Menyusun laporan keuangan secara berkala untuk transparansi. 
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            • Mengelola kas organisasi dengan cermat dan sesuai kebutuhan. 
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            • Menyimpan dan mengatur dokumen keuangan dengan rapi. 
+                        </p>
+                    </div>
+
+                    <div class="glass-card glass-card-hover p-6 rounded-3xl space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-rosebrand-50 text-rosebrand-600 flex items-center justify-center text-sm font-bold">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-800">Optimalisasi Pengembangan Masyarakat Desa</h3>
+                        <h5 class="text-xs font-bold text-slate-500">(Feb - Mar 2024)</h5>
+                        <p class="text-xs font-semibold text-rosebrand-700">Volunteer</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">• Membantu pelaksanaan program keagamaan dan pendidikan warga.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">• Mengorganisir kegiatan workshop dan kerja bakti sosial.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 8: SERTIFIKAT ================= -->
+        <section id="sertifikat" class="w-screen h-[calc(100vh-3.5rem)] flex-shrink-0 snap-center p-6 md:p-12 lg:p-16 flex items-center justify-center overflow-y-auto">
+            <div class="max-w-6xl w-full space-y-6">
+                
+                <!-- Section Header -->
+                <div class="border-b border-rose-100 pb-4">
+                    <span class="text-xs font-semibold tracking-widest text-rosebrand-700 uppercase">Lisensi & Sertifikasi</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-800 mt-1">Sertifikat</h2>
+                </div>
+
+                <!-- Certificates Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Cert 1 -->
+                    <div class="glass-card glass-card-hover p-5 rounded-3xl space-y-3 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="w-8 h-8 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <h3 class="text-sm font-bold text-slate-800">Penghargaan Cumlaude</h3>
+                            <p class="text-[11px] text-slate-500 font-medium">Penerbit: FSBK Universitas Ahmad Dahlan</p>
+                            <span class="inline-block px-2 py-0.5 rounded bg-slate-100 text-[10px] text-slate-600">Tahun 2026</span>
+                        </div>
+                        <button onclick="openModal('Penghargaan Cumlaude','Sertifikat Penghargaan Cumlaude','sertifikat cumlaude.jpg')" class="w-full py-2 rounded-xl bg-rosebrand-50 hover:bg-rosebrand-100 text-rosebrand-700 font-semibold text-xs transition">
+                            Lihat Detail <i class="fa-solid fa-eye ml-1"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="glass-card glass-card-hover p-5 rounded-3xl space-y-3 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="w-8 h-8 rounded-xl bg-sage-50 text-sage-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <h3 class="text-sm font-bold text-slate-800">Panitia Program Pengenalan Kampus UAD 2024</h3>
+                            <p class="text-[11px] text-slate-500 font-medium">Penerbit: Kemahasiswaan dn Alumni UAD</p>
+                            <span class="inline-block px-2 py-0.5 rounded bg-slate-100 text-[10px] text-slate-600">Tahun 2024</span>
+                        </div>
+                        <button onclick="openModal('Panitia Program Pengenalan Kampus UAD 2024','Sertifikat Panitia P2K 2024','Sertifikat Panitia P2K 2024.jpg')" class="w-full py-2 rounded-xl bg-sage-50 hover:bg-sage-100 text-sage-700 font-semibold text-xs transition">
+                            Lihat Detail <i class="fa-solid fa-eye ml-1"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="glass-card glass-card-hover p-5 rounded-3xl space-y-3 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="w-8 h-8 rounded-xl bg-rosebrand-50 text-rosebrand-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-newspaper"></i>
+                            </div>
+                            <h3 class="text-sm font-bold text-slate-800">Cultural Literation Milad FSBK UAD</h3>
+                            <p class="text-[11px] text-slate-500 font-medium">Penerbit: BEM FSBK UAD</p>
+                            <span class="inline-block px-2 py-0.5 rounded bg-slate-100 text-[10px] text-slate-600">Tahun 2024</span>
+                        </div>
+                        <button onclick="openModal('Cultural Literation Milad FSBK UAD', 'Sertifikat Panitia Cultural Literation Milad Fakultas Sastra, Budaya, dan Komunikasi Universitas Ahmad Dahlan.', 'sertfikat milad.jpg')" class="w-full py-2 rounded-xl bg-rosebrand-50 hover:bg-rosebrand-100 text-rosebrand-700 font-semibold text-xs transition">
+                            Lihat Detail <i class="fa-solid fa-eye ml-1"></i>
+                        </button>
+                    </div>
+
+                     <!-- Cert 4 -->
+                    <div class="glass-card glass-card-hover p-5 rounded-3xl space-y-3 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="w-8 h-8 rounded-xl bg-sage-50 text-sage-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <h3 class="text-sm font-bold text-slate-800">BEM FSBK UAD</h3>
+                            <p class="text-[11px] text-slate-500 font-medium">Penerbit: Fakultas Sastra Budaya dan Komunikasi UAD</p>
+                            <span class="inline-block px-2 py-0.5 rounded bg-slate-100 text-[10px] text-slate-600">Tahun 2024</span>
+                        </div>
+                        <button onclick="openModal('BEM FSBK UAD','Sertifikat Anggota Badan Eksekutif Fakultas Sastra Budaya dan Komunikasi Universtas Ahmad Dahlan','Sertifikat BEM FSBK.jpg')" class="w-full py-2 rounded-xl bg-sage-50 hover:bg-sage-100 text-sage-700 font-semibold text-xs transition">
+                            Lihat Detail <i class="fa-solid fa-eye ml-1"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 5 -->
+                    <div class="glass-card glass-card-hover p-5 rounded-3xl space-y-3 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="w-8 h-8 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <h3 class="text-sm font-bold text-slate-800">Pelatihan Soft Skill Tahap I</h3>
+                            <p class="text-[11px] text-slate-500 font-medium">Penerbit: FSBK Universitas Ahmad Dahlan</p>
+                            <span class="inline-block px-2 py-0.5 rounded bg-slate-100 text-[10px] text-slate-600">Tahun 2023</span>
+                        </div>
+                        <button onclick="openModal('Pelatihan Soft Skills Tahap I','Sertifikat keikutsertaan pelatihan soft skills tahap I','Diva Ridho Pelatihan Soft Skill 1.jpg')" class="w-full py-2 rounded-xl bg-rosebrand-50 hover:bg-rosebrand-100 text-rosebrand-700 font-semibold text-xs transition">
+                            Lihat Detail <i class="fa-solid fa-eye ml-1"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 6 -->
+                    <div class="glass-card glass-card-hover p-5 rounded-3xl space-y-3 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="w-8 h-8 rounded-xl bg-sage-50 text-sage-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <h3 class="text-sm font-bold text-slate-800">Pelatihan Soft Skills Tahap II</h3>
+                            <p class="text-[11px] text-slate-500 font-medium">Penerbit: Kemahasiswaan dan Alumni UAD</p>
+                            <span class="inline-block px-2 py-0.5 rounded bg-slate-100 text-[10px] text-slate-600">Tahun 2025</span>
+                        </div>
+                        <button onclick="openModal('Pelatihan Soft Skills Tahap II','Sertifikat keikutsertaan pelatihan soft skills tahap II','Diva Ridho Pelatihan Soft Skills 2.jpg')" class="w-full py-2 rounded-xl bg-sage-50 hover:bg-sage-100 text-sage-700 font-semibold text-xs transition">
+                            Lihat Detail <i class="fa-solid fa-eye ml-1"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 7 -->
+                    <div class="glass-card glass-card-hover p-5 rounded-3xl space-y-3 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="w-8 h-8 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <h3 class="text-sm font-bold text-slate-800">TOEFL</h3>
+                            <p class="text-[11px] text-slate-500 font-medium">Penerbit: Ahmad Dahlan Language Center</p>
+                            <span class="inline-block px-2 py-0.5 rounded bg-slate-100 text-[10px] text-slate-600">Tahun 2026</span>
+                        </div>
+                        <button onclick="openModal('TOEFL','Certificate of Achievement TOEFL Ahmad Dahlan Language Center','TOEFL.jpg')" class="w-full py-2 rounded-xl bg-rosebrand-50 hover:bg-rosebrand-100 text-rosebrand-700 font-semibold text-xs transition">
+                            Lihat Detail <i class="fa-solid fa-eye ml-1"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 9: KONTAK ================= -->
+        <section id="kontak" class="w-screen h-[calc(100vh-3.5rem)] flex-shrink-0 snap-center p-6 md:p-12 lg:p-16 flex items-center justify-center overflow-y-auto">
+            <div class="max-w-4xl w-full space-y-6">
+                
+                <!-- Section Header -->
+                <div class="text-center space-y-1">
+                    <span class="text-xs font-semibold tracking-widest text-rosebrand-700 uppercase">Mari Terhubung</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-800">Hubungi Diva</h2>
+                    <p class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">
+                        Silakan kirimkan pesan untuk diskusi kerja sama, tawaran karir profesional, atau konsultasi kehumasan!
+                    </p>
+                </div>
+
+                <!-- Form Card -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl max-w-2xl mx-auto border border-rose-100 shadow-lg relative">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap</label>
+                                <input type="text" required placeholder="Masukkan nama Anda" class="w-full px-4 py-2.5 rounded-xl bg-white/80 border border-rose-100 text-slate-800 placeholder-slate-400 text-xs focus:outline-none focus:border-rosebrand-400 focus:ring-1 focus:ring-rosebrand-400 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Alamat Email</label>
+                                <input type="email" required placeholder="nama@domain.com" class="w-full px-4 py-2.5 rounded-xl bg-white/80 border border-rose-100 text-slate-800 placeholder-slate-400 text-xs focus:outline-none focus:border-rosebrand-400 focus:ring-1 focus:ring-rosebrand-400 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Pesan Anda</label>
+                            <textarea rows="3" required placeholder="Tuliskan topik pesan atau tawaran kerja sama..." class="w-full px-4 py-2.5 rounded-xl bg-white/80 border border-rose-100 text-slate-800 placeholder-slate-400 text-xs focus:outline-none focus:border-rosebrand-400 focus:ring-1 focus:ring-rosebrand-400 transition resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-rosebrand-500 via-rosebrand-600 to-sage-600 text-white font-semibold text-xs shadow-md shadow-rosebrand-500/20 hover:shadow-lg transition">
+                            Kirim Pesan Sekarang <i class="fa-solid fa-paper-plane ml-1.5"></i>
+                        </button>
+                    </form>
+
+                    <!-- Success Toast Message Notification -->
+                    <div id="toast-message" class="hidden absolute inset-0 bg-white/95 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center text-center p-6 space-y-3 z-20">
+                        <div class="w-12 h-12 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-800">Pesan Terkirim!</h4>
+                        <p class="text-xs text-slate-500 max-w-xs">Terima kasih banyak telah menghubungi. Saya akan segera membalas email Anda.</p>
+                        <button onclick="closeToast()" class="px-5 py-2 rounded-xl bg-rosebrand-500 text-xs text-white hover:bg-rosebrand-600 transition shadow-sm">Tutup</button>
+                    </div>
+                </div>
+
+                <!-- Direct Social Links -->
+                <div class="flex justify-center space-x-3 pt-2">
+                    <a href="mailto:divasaz.id@gmail.com" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-slate-600 hover:text-rosebrand-600 hover:border-rosebrand-300 transition" title="Email">
+                        <i class="fa-solid fa-envelope text-sm"></i>
+                    </a>                    
+                    <a href="https://www.instagram.com/diva.aridho?exln=bDAwOHI2YTJ5ejJ4" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-slate-600 hover:text-rosebrand-600 hover:border-rosebrand-300 transition" title="Instagram">
+                        <i class="fa-brands fa-instagram text-sm"></i>
+                    </a>
+                    <a href="https://wa.me/qr/5JLAUQH4B74HK1" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-slate-600 hover:text-sage-600 hover:border-sage-300 transition" title="WhatsApp">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Certificate Preview Modal -->
+    <div id="certModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card bg-white/95 p-6 rounded-3xl max-w-lg w-full space-y-4 relative shadow-2xl border border-rose-100 max-h-[90vh] overflow-y-auto">
+            
+            <!-- Tombol Close -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-rosebrand-100 hover:text-rosebrand-700 text-slate-500 flex items-center justify-center text-sm transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Judul Modal -->
+            <h3 id="modalTitle" class="text-base sm:text-lg font-bold text-slate-800 border-b border-rose-100 pb-2 pr-8"></h3>
+
+            <!-- Wadah & Foto Sertifikat -->
+            <div id="modalImageContainer" class="w-full aspect-[4/3] rounded-2xl bg-slate-100 overflow-hidden border border-rose-100 shadow-inner">
+                <img id="modalImage" src="" alt="Pratinjau Sertifikat" class="w-full h-full object-contain bg-slate-50">
+            </div>
+
+            <!-- Deskripsi Sertifikat -->
+            <p id="modalDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed"></p>
+        </div>
+    </div>
+
+    <!-- Bottom Progress Bar & Page Counter Helper (9 Sections Total) -->
+    <div class="fixed bottom-0 left-0 w-full z-40 bg-white/80 border-t border-rose-100 py-2 px-6 flex items-center justify-between text-xs text-slate-500">
+        <span class="text-[11px] hidden sm:block">💡 Putar wheel mouse / geser panah untuk menggeser seksi ke samping</span>
+        
+        <!-- Progress Bar Track -->
+        <div class="w-full max-w-xs sm:max-w-md bg-rosebrand-50 h-1.5 rounded-full overflow-hidden mx-auto sm:mx-0 border border-rose-100">
+            <div id="progress-bar" class="bg-gradient-to-r from-rosebrand-500 to-sage-500 h-full w-0 transition-all duration-150"></div>
+        </div>
+
+        <span id="section-indicator" class="font-mono text-[11px] font-bold text-rosebrand-700">1 / 9</span>
+    </div>
+
+    <!-- JavaScript Controller -->
+    <script>
+        const track = document.getElementById('horizontal-track');
+        const progressBar = document.getElementById('progress-bar');
+        const indicator = document.getElementById('section-indicator');
+        
+        // 9 Main Standalone Section IDs matching navigation
+        const sectionIds = ['profil', 'pendidikan', 'soft-skill', 'hard-skill', 'internship', 'organisasi', 'kepanitiaan', 'sertifikat', 'kontak'];
+
+        // Convert Vertical Mouse Wheel Scroll to Horizontal Track Scroll
+        track.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                track.scrollLeft += e.deltaY * 1.2;
+            }
+        }, { passive: false });
+
+        // Helper function to get exact current section index (0..8)
+        function getCurrentIndex() {
+            const sectionWidth = window.innerWidth;
+            if (sectionWidth === 0) return 0;
+            return Math.min(
+                sectionIds.length - 1, 
+                Math.max(0, Math.round(track.scrollLeft / sectionWidth))
+            );
+        }
+
+        // Update Nav Link Active States & Progress Bar Position
+        track.addEventListener('scroll', () => {
+            const maxScrollLeft = track.scrollWidth - track.clientWidth;
+            const currentScroll = track.scrollLeft;
+            const scrollPercentage = maxScrollLeft > 0 ? (currentScroll / maxScrollLeft) * 100 : 0;
+
+            // Update Progress Bar Width
+            if (progressBar) {
+                progressBar.style.width = `${Math.min(100, Math.max(0, scrollPercentage))}%`;
+            }
+
+            const activeIndex = getCurrentIndex();
+            
+            if (indicator) {
+                indicator.innerText = `${activeIndex + 1} / ${sectionIds.length}`;
+            }
+
+            // Highlight Active Menu Button & auto-scroll menu into view
+            sectionIds.forEach((id, idx) => {
+                const navBtn = document.getElementById(`nav-${id}`);
+                if (navBtn) {
+                    if (idx === activeIndex) {
+                        navBtn.classList.add('bg-rosebrand-500', 'text-white', 'shadow-xs');
+                        navBtn.classList.remove('text-slate-600');
+                        // Scroll active menu button gently into middle of navbar container
+                        navBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    } else {
+                        navBtn.classList.remove('bg-rosebrand-500', 'text-white', 'shadow-xs');
+                        navBtn.classList.add('text-slate-600');
+                    }
+                }
+            });
+        });
+
+        // Smooth Scroll to Specific Section by ID using exact offset
+        function scrollToSection(id) {
+            const targetElement = document.getElementById(id);
+            if (targetElement && track) {
+                track.scrollTo({
+                    left: targetElement.offsetLeft,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Arrow Controls Navigation (-1 or +1 sequentially)
+        function navigateSlide(direction) {
+            const currentIdx = getCurrentIndex();
+            const nextIdx = Math.min(sectionIds.length - 1, Math.max(0, currentIdx + direction));
+            scrollToSection(sectionIds[nextIdx]);
+        }
+
+        // Certificate Modal Logic
+        function openModal(title, description, imageUrl) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = description;
+            
+            const modalImg = document.getElementById('modalImage');
+            const container = document.getElementById('modalImageContainer');
+            if (imageUrl) {
+                modalImg.src = imageUrl;
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+
+            document.getElementById('certModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('certModal').classList.add('hidden');
+        }
+
+        // Contact Form Handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            document.getElementById('toast-message').classList.remove('hidden');
+        }
+
+        function closeToast() {
+            document.getElementById('toast-message').classList.add('hidden');
+            document.getElementById('contact-form').reset();
+        }
+
+        // Highlight first menu on load
+        window.onload = function() {
+            const firstNavBtn = document.getElementById('nav-profil');
+            if (firstNavBtn) {
+                firstNavBtn.classList.add('bg-rosebrand-500', 'text-white', 'shadow-xs');
+            }
+        };
+    </script>
+</body>
+</html>
